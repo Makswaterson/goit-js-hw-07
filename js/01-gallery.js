@@ -19,11 +19,22 @@ const galleryMarkup = galleryItems
   </a>
 </div>`
   )
-  .join();
+  .join('');
+galleryRef.insertAdjacentHTML('beforebegin', galleryMarkup);
 
 const onGalleryClick = evt => {
   evt.preventDefault();
+
+  if (evt.target.nodeName !== 'IMG') {
+    return;
+  }
+
+  const largeImg = evt.target.dataset.source;
+  const instance = basicLightbox.create(`
+    <img src="${largeImg}" width="800" height="600">
+`);
+
+  instance.show();
 };
 
-galleryRef.insertAdjacentHTML('beforebegin', galleryMarkup);
 galleryRef.addEventListener('click', onGalleryClick);
