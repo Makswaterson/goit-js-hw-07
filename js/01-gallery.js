@@ -38,6 +38,9 @@ const onGalleryClick = evt => {
     if (evt.code === 'Escape') {
       instance.close();
     }
+    {
+      once: true;
+    }
   });
 };
 
