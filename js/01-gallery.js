@@ -20,6 +20,7 @@ const galleryMarkup = galleryItems
 </div>`
   )
   .join('');
+console.log(galleryMarkup);
 galleryRef.insertAdjacentHTML('beforebegin', galleryMarkup);
 
 const onGalleryClick = evt => {
@@ -30,11 +31,14 @@ const onGalleryClick = evt => {
   }
 
   const largeImg = evt.target.dataset.source;
-  const instance = basicLightbox.create(`
-    <img src="${largeImg}" width="800" height="600">
-`);
-
+  const instance = basicLightbox.create(`<img src="${largeImg}" width="800" height="600">`);
   instance.show();
+
+  galleryRef.addEventListener('keydown', evt => {
+    if (evt.code === 'Escape') {
+      instance.close();
+    }
+  });
 };
 
 galleryRef.addEventListener('click', onGalleryClick);
