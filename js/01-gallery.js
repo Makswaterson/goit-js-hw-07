@@ -21,7 +21,7 @@ const galleryMarkup = galleryItems
   )
   .join('');
 console.log(galleryMarkup);
-galleryRef.insertAdjacentHTML('beforebegin', galleryMarkup);
+galleryRef.insertAdjacentHTML('beforeend', galleryMarkup);
 
 const onGalleryClick = evt => {
   evt.preventDefault();
